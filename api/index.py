@@ -1,11 +1,12 @@
-from flask import Flask, jsonify
+from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-@app.route('/')
-def index():
-    # This will cause an error, as 'undefined_variable' is not defined
-    return jsonify(message="Hello World!", value=undefined_variable)
+@app.route('/webhook', methods=['POST'])
+def webhook():
+    data = request.json
+    print("Received webhook data:", data)  # Log the received data
+    return jsonify({"status": "success", "data": data}), 200
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000)
