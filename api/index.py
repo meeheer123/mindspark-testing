@@ -3,7 +3,7 @@ import requests
 from flask import Flask
 
 # Define your API endpoint
-MY_API_ENDPOINT = "https://2874-210-212-183-2.ngrok-free.app/error-handler"
+MY_API_ENDPOINT = "https://foremost-sweltering-dew.glitch.me/error-handler"
 
 # Sentry initialization
 sentry_sdk.init(
