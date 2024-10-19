@@ -3,7 +3,7 @@ import requests
 from flask import Flask
 
 # Define your API endpoint
-MY_API_ENDPOINT = "https://47e4-210-212-183-2.ngrok-free.app/error-handler"
+MY_API_ENDPOINT = "https://36eb-210-212-183-2.ngrok-free.app/error-handler"
 
 # Sentry initialization
 sentry_sdk.init(
@@ -28,8 +28,7 @@ def send_error_to_api(event):
 app = Flask(__name__)
 
 @app.route("/")
-def hello_world():
-    1/0  # Raises an error
+def hello_world():  # Raises an error
     return "<p>Hello, World!</p>"
 
 if __name__ == '__main__':
