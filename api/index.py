@@ -7,7 +7,7 @@ MY_API_ENDPOINT = "https://foremost-sweltering-dew.glitch.me/error-handler"
 
 # Sentry initialization
 sentry_sdk.init(
-    dsn="https://72abbb6de5212124591b8e322042c19a@o4508146106630144.ingest.us.sentry.io/4508146141102080",
+    dsn="https://799617a61eb573bcc80f41a17fb07a30@o4508148663910400.ingest.us.sentry.io/4508148665155584",
     traces_sample_rate=1.0,
     profiles_sample_rate=1.0,
     before_send=lambda event, hint: send_error_to_api(event)  # Intercept the error before sending to Sentry
