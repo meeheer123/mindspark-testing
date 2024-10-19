@@ -29,8 +29,10 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello_world():
-    print(helloworlx)
+    my_list = [1, 2, 3]
+    print(my_list[5])  # This will cause an IndexError
     return "<p>Hello, World!</p>"
+
 
 
 if __name__ == '__main__':
