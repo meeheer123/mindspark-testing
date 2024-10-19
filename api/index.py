@@ -13,36 +13,16 @@ sentry_sdk.init(
     before_send=lambda event, hint: send_error_to_api(event)  # Intercept the error before sending to Sentry
 ) 
 
-@app.route("/error-handler", methods=["POST"])
-def error_handler():
-    # Get the error data sent by Sentry
-    error_data = request.get_json()
-
-    if not error_data:
-        return jsonify({"message": "No error data received"}), 400
-
-    # Extract the error type and description from the error data
+# Function to send error details to your API
+def send_error_to_api(event):
     try:
-        error_type = error_data['exception']['values'][0]['type']
-        error_description = error_data['exception']['values'][0]['value']
-    except (KeyError, IndexError) as e:
-        error_type = "Unknown Error"
-        error_description = "Error extracting error details"
-
-    # Print or log the error type and description
-    print(f"Error Type: {error_type}")
-    print(f"Description: {error_description}")
-
-    # Optionally, log the entire error data to a file or database
-    log_to_file_or_db(error_data)
-
-    # Respond with a success message
-    return jsonify({
-        "message": "Error received and processed",
-        "error_type": error_type,
-        "description": error_description
-    }), 200
-
+        # Send event to your custom API
+        response = requests.post(MY_API_ENDPOINT, json=event)
+        print(f"Response from API: {response.status_code} - {response.text}")
+        response.raise_for_status()  # Raise an exception for non-200 responses
+    except requests.exceptions.RequestException as e:
+        print(f"Failed to send error to API: {e}")
+    return event  # Return event to proceed with Sentry reporting
 
 # Flask app
 app = Flask(__name__)
