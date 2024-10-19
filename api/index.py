@@ -28,9 +28,10 @@ def send_error_to_api(event):
 app = Flask(__name__)
 
 @app.route("/")
-def hello_world():  # Raises an error
-    print(helloworlx)
+def hello_world():
+    print(helloworlx
     return "<p>Hello, World!</p>"
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
