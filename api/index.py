@@ -29,6 +29,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello_world():  # Raises an error
+    1/0
     return "<p>Hello, World!</p>"
 
 if __name__ == '__main__':
