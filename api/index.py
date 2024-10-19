@@ -29,7 +29,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello_world():
-    print(helloworlx
+    print(helloworlx)
     return "<p>Hello, World!</p>"
 
 
